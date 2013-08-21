@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlcontext [
+	<!ELEMENT sqlcontext (class*)>
+	<!ELEMENT class (query*)>
+	<!ELEMENT query (#PCDATA)>
+	<!ATTLIST class name ID #REQUIRED>
+	<!ATTLIST query id CDATA #REQUIRED>
+]>
+<sqlcontext>
+	<class name="aaa">
+		<query id="list">
+			<![CDATA[
+				select * from Tetst
+			]]>
+		</query>
+	</class>
+	<class name="bbb">
+		<query id="list">
+			<![CDATA[
+				select * from Tetst
+			]]>
+		</query>
+	</class>
+</sqlcontext>
+
