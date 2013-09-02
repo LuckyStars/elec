@@ -17,7 +17,7 @@
 	    <span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span>
 	  	</h1>
 		<div class="sub_title">
-			<h2>编辑学期</h2>
+			<h2>编辑选课</h2>
 		</div>
 		<form action="${prc}/elec/updateTerm.action" method="post" onsubmit="return checkForm()">
 			<input type="hidden" value="${term.id}" name="id" />

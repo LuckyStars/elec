@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -84,7 +84,7 @@ KindEditor.ready(function(K) {
     <h1><span>新的课程</span></h1>
     <div class="text_box">
         <p>
-            <label><fmt:message key="i18nTermName" bundle="${bundler}" />名称：</label>
+            <label>选课学期名称：</label>
             &nbsp;${currentTerm.name }
             <input type="hidden" name="ecCond.termId" value="${currentTerm.id }" />
         </p>
@@ -100,7 +100,7 @@ KindEditor.ready(function(K) {
         </p>
         <p>
             <label>课程名称：</label>
-			<input name="ecCond.name" type="text" style="width:500px;"  maxlength="50"/>
+			<input name="ecCond.name" type="text" style="width:280px;"  maxlength="50"/>
 			<span class="redTip" id="ecCond_name_span">*</span>
         </p>
         <p class="chkbox">
@@ -149,9 +149,9 @@ KindEditor.ready(function(K) {
         </c:if>
         <p>
             <label>报名开始：</label>
-			<input name="ecCond.signStartDateStr" value="<fmt:formatDate value="${currentTerm.signDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss', maxDate:'#F{$dp.$D(\'d4312\')}', minDate:'<fmt:formatDate value="${currentTerm.openDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>'})" id="d4311" style="width:135px;" />
+			<input name="ecCond.signStartDateStr" value="<fmt:formatDate value="${currentTerm.signDateStart}" pattern="yyyy-MM-dd"/>" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd', maxDate:'#F{$dp.$D(\'d4312\')}', minDate:'<fmt:formatDate value="${currentTerm.openDateStart}" pattern="yyyy-MM-dd"/>'})" id="d4311" style="width:135px;" />
             <label>报名结束：</label>
-            <input name="ecCond.signEndDateStr" value="<fmt:formatDate value="${currentTerm.signDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',  maxDate:'<fmt:formatDate value="${currentTerm.openDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>', minDate:'#F{$dp.$D(\'d4311\')}'})" id="d4312" style="width:135px;" />
+            <input name="ecCond.signEndDateStr" value="<fmt:formatDate value="${currentTerm.signDateEnd}" pattern="yyyy-MM-dd "/>" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',  maxDate:'<fmt:formatDate value="${currentTerm.openDateEnd}" pattern="yyyy-MM-dd"/>', minDate:'#F{$dp.$D(\'d4311\')}'})" id="d4312" style="width:135px;" />
             <span class="redTip" id="ecCond_signDate_span">*</span>
         </p>
         <p>
@@ -223,7 +223,7 @@ KindEditor.ready(function(K) {
 			<span class="redTip" id="ecCond_endPlaceId_span"></span>
         </p>
 		--%>
-        <p style="float:left; clear:both; height: auto; margin-top: 5px;"> <span class="fl">选课提示：</span>
+        <p style="float:left; clear:both; height: auto; margin-top: 5px;"> <span class="fl">课程提示：</span>
 			<textarea class="fl" name="ecCond.courseComment" maxlength="100" style="height:50px;"></textarea><br/>
         </p>
 		<p class="pRedTip" style="color:#808080;" id="ecCond_courseComment_span">选课提示，将显示在课程详细页最上方，且以红色字体高亮</p>

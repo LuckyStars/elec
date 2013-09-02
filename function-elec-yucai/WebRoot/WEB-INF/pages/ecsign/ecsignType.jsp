@@ -13,7 +13,7 @@
 <body>
 	<div class="box">
 		<h1 class="tit">
-	    <span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span>
+	    <span class="title">校本选课</span>
 	  	</h1>
 	  	<div class="cl"></div>
 	    <div class="box_main">

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="../../common/common.jsp"%>
-<title>学生报名</title>
+<title>学生报名首页</title>
 <link href="${med}/css/xqstyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${med}/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="${med }/js/common/agent.js" ></script>
@@ -75,8 +75,8 @@ function showTime() {
     </h1>
         <div class="title_box fixed">
         <div class="title">${term.name }</div>
-        <p>报名时间：<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日 HH:mm" />
-         - <fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日 HH:mm" /></p>
+        <p>报名时间：<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日" />
+         - <fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日" /></p>
         </div>
         <br/><br/><br/>
         <div class="apply" >

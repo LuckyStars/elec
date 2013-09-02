@@ -59,7 +59,7 @@
 						<span id="nameSpan"></span>
 					</p>
 					<p>
-						<label class="p_tit">相关课程：</label> 
+						<label class="p_tit">课程分类：</label> 
 						<c:forEach items="${ecTypelist}" var = "str">
 							<input type="checkbox" id="${str.id}"  name="typeName" value="${str.id}" />
 							<label >${str.name}</label> 
@@ -80,7 +80,7 @@
 <!--弹出层    添加-->
 
 	<div id="contentId" class="con_conent fixed">
-	<h1 class="tit"><span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span><a class="fr" href="${prc}/index.jsp">返回</a></h1>
+	<h1 class="tit"><span class="title">校本选课</span><a class="fr" href="${prc}/index.jsp">返回</a></h1>
     <h2>
     <span class="sp_place" >地点管理</span>
 	<a style="padding:0px 12px 0px 0px;;float: right;margin:13px 25px 0px 10px;display:block;height:21px;text-align:center;line-height:21px;color:#fff;background:url(${med}/images/btn.gif) repeat;" href="javascript:void(0);">

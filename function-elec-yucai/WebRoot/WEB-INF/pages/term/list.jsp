@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/common/common.jsp"%>
    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -18,27 +18,27 @@ a:HOVER {
 <body>
 	<div class="main" style="float: left;">
 		<h1 class="tit">
-	    <span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span>
+	    <span class="title">校本选课</span>
 	    <a class=".fr" href="${prc}/elec/index.action" style="float:right;padding-right:10px;font-weight: normal;" >返回</a>
 	  	</h1>
 	  	<div class="cl"></div>
 	  	<div class="title_h4">
-	    	<h4><fmt:message key="i18nTermName" bundle="${bundler}" />信息列表</h4>
+	    	<h4>选课学期信息列表</h4>
 	  	</div>
 	  	<div class="list_title">
 	    	<div class="small_button">
 	      	<ul>
 	        	<li><img src="${med}/images/add_arrow.gif" />
 	        	<a  style="color: white;font-size: 12px;font-weight: 100;" 
-	        	href="${prc }/elec/gotoAddTerm.action">新的<fmt:message key="i18nTermName" bundle="${bundler}" /></a></li>
+	        	href="${prc }/elec/gotoAddTerm.action">新建选课学期</a></li>
 	      	</ul>
 	    	</div>
 	  	</div>
 	  	<table  border="0" cellspacing="0" cellpadding="0" class="table_border">
 	    	<tr class="table_title">
-	      		<td align="left" class="first">学期名称</td>
-	      		<td>开课日期</td>
-	      		<td>报名日期</td>
+	      		<td align="left" class="first">选课学期名称</td>
+	      		<td>选课开放日期</td>
+	      		<td>选课报名日期</td>
 	      		<td width="100">最大选课数</td>
 	      		<td width="100">操作</td>
 	    	</tr>
@@ -58,9 +58,9 @@ a:HOVER {
 				     		</div>
 			      		</td>
 				      	<td>
-				      		<fmt:formatDate value="${term.lessonDateStart}" pattern="yyyy年MM月dd日"/>
+				      		<fmt:formatDate value="${term.openDateStart}" pattern="yyyy年MM月dd日"/>
 				      		-
-				      		<fmt:formatDate value="${term.lessonDateEnd}" pattern="yyyy年MM月dd日"/>
+				      		<fmt:formatDate value="${term.openDateEnd}" pattern="yyyy年MM月dd日"/>
 				      	</td>
 				      	<td>
 				      		<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日"/>

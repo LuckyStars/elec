@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="../../common/common.jsp"%>
-<title>学生报名</title>
+<title>学生自己课程信息</title>
 <link href="${med}/css/xqstyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${med}/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="${med}/js/common/agent.js" ></script>
@@ -45,13 +45,15 @@ var messages="${message}";
 </div>
 <!--弹出层-->
 <div class="con_conent fixed">
-    <h1 class="tit"><span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span><a class="fr" href="${prc}/elec/indexSigAction.action?clubState=${clubState}">返回</a></h1>
+    <h1 class="tit"><span class="title">校本选课</span><a class="fr" href="${prc}/elec/indexSigAction.action?clubState=${clubState}">返回</a></h1>
     <div class="title_box fixed">
         <div class="title">${term.name }</div>
-        <p>报名时间：<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日 HH:mm" />
-         - <fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日 HH:mm" />
+        <p>报名时间：<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日" />
+         - <fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日" />
          </p>
-        <p class="red">选课提示：${term.comments }</p>
+        <p class="red">
+			<span style="margin:0 auto; display:block; width:600px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${term.comments }">
+		选课提示：${term.comments }</p>
     </div>
     <h2><a class="c_btn" href="${prc}/elec/ecsignSigAction.action?clubState=${clubState}">查看所有课程</a><span class="fl"><c:if test="${term.maxCourse!=0}">&nbsp; &nbsp;共可以报<b> &nbsp;${term.maxCourse}&nbsp; </b>门课</c:if>&nbsp;&nbsp;您已经报名了<b>&nbsp;${courseCount }&nbsp;</b> 门课程!</span>
     <!--<a class="print_btn" href="#">打印报到凭据</a>
@@ -59,22 +61,26 @@ var messages="${message}";
     <div class="clear"></div>
      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="change_tab">
         <tr>
-            <th width="12%" scope="col">课程名称</th>
-            <th width="4%" scope="col">类别 </th>
+            <th width="10%" scope="col">课程名称</th>
+            <th width="6%" scope="col">类别 </th>
             <th width="4%" scope="col">老师 </th>
             <th width="10%" scope="col">开结课日期</th>
+			<%--
             <th width="14%" scope="col">上课时间</th>
+			--%>
             <th width="8%" scope="col">年级范围 </th>
+				<%--
             <c:if test="${ecsignType==1 }">
             <th width="16%" scope="col">你的上课时间</th>
             </c:if>
+				--%>
             <th width="14%" scope="col">报名</th>
         </tr>
         <c:forEach var="course"  items="${ecSignCourseVos}" >
 	        <tr>
 	            <td>
 		            <a href="${prc}/elec/ecsignDetailsSigAction.action?ecCourseVO.id=${course.ecCourseVO.id}&locationGo=2&ecCourseVO.typeId=${ecCourseVO.typeId }&ecCourseVO.weekIndex=${ecCourseVO.weekIndex }&ecCourseVO.name=${ecCourseVO.name}&clubState=${clubState}">
-			            <div style="cursor:pointer;width:45px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${course.ecCourseVO.name }">
+			            <div style="cursor:pointer;width:60px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${course.ecCourseVO.name }">
 			        	${course.ecCourseVO.name }
 			        	</div>
 			        </a>
@@ -96,6 +102,7 @@ var messages="${message}";
 	            	<fmt:formatDate value="${course.ecCourseVO.classEndDate}" pattern="yyyy-MM-dd" />
 	            	</p>
 	            </td>
+				<%--
 	            <td><c:if test="${!empty course.ecCourseVO.classhourList && (fn:length(course.ecCourseVO.classhourList)>0)}">
 				    <c:forEach items="${course.ecCourseVO.classhourList}" var="ch" varStatus="chStats" >
 				   	${ch.weekIndexStr } 
@@ -105,7 +112,9 @@ var messages="${message}";
 				    </c:forEach>
 				    </c:if>
 			    </td>
+				--%>
 	            <td>${course.ecCourseVO.gradeNames }</td>
+				<%--
 	            <c:if test="${ecsignType==1 }">
 	            <td>
 	            	<c:if test="${!empty course.ecClasshours && (fn:length(course.ecClasshours)>0)}">
@@ -121,6 +130,7 @@ var messages="${message}";
 				    </c:if>
 				</td>
 				</c:if>
+				--%>
 	            <td>
 			         <c:if test="${ecsignType==0  }">
 			        	<a class="td_b"   onclick="delSign('${course.ecSign.id }','${course.ecCourseVO.name }')"  href="javascript:" >报错了/退课</a>

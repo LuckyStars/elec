@@ -1,39 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/common/common.jsp"%>
 
 <div class="edit_course">
 	<ul>
 		<li>
-			<span><fmt:message key="i18nTermName" bundle="${bundler}" />名称：</span>
+			<span>选课学期名称：</span>
 			<input name="term.name" value="${term.name }" type="text" />
 			<font id="nameErr" style="color: red;"></font>
 		</li>
 		<li>
-			<span>开放日期：</span>
+			<span>选课开放日期：</span>
 			<input name="term.openDateStart" class="Wdate" type="text" id="openDateStart"
-			onfocus="WdatePicker({onpicked:function(){openDateEnd.focus();},dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'openDateEnd\');}',isShowClear:false})"
+			onfocus="WdatePicker({onpicked:function(){openDateEnd.focus();},dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'openDateEnd\');}',isShowClear:false})"
 			readonly="readonly"
-			value="<fmt:formatDate value="${term.openDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+			value="<fmt:formatDate value="${term.openDateStart}" pattern="yyyy-MM-dd"/>"
 			 />至 
 			<input name="term.openDateEnd" class="Wdate" type="text" id="openDateEnd"
-			onfocus="WdatePicker({onpicked:function(){signDateStart.focus();},dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'openDateStart\');}',isShowClear:false})"	
+			onfocus="WdatePicker({onpicked:function(){signDateStart.focus();},dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'openDateStart\');}',isShowClear:false})"	
 			readonly="readonly"
-			value="<fmt:formatDate value="${term.openDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+			value="<fmt:formatDate value="${term.openDateEnd}" pattern="yyyy-MM-dd"/>"
 			/>
 			<font id="openDateErr" style="color: red;"></font>
 		</li>
 		<li>
-			<span>报名时间：</span>
+			<span>选课报名日期：</span>
 			<input name="term.signDateStart" class="Wdate" type="text" id="signDateStart"
-			onfocus="WdatePicker({onpicked:function(){signDateEnd.focus();},onpicking:checkDate('openDate'),dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'openDateStart\');}',maxDate:'#F{$dp.$D(\'openDateEnd\');}',isShowClear:false})"
+			onfocus="WdatePicker({onpicked:function(){signDateEnd.focus();},onpicking:checkDate('openDate'),dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'openDateStart\');}',maxDate:'#F{$dp.$D(\'openDateEnd\');}',isShowClear:false})"
 			readonly="readonly"
-			value="<fmt:formatDate value="${term.signDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+			value="<fmt:formatDate value="${term.signDateStart}" pattern="yyyy-MM-dd"/>"
 			 />至
 			<input name="term.signDateEnd" class="Wdate" type="text" id="signDateEnd"
-			onfocus="WdatePicker({onpicking:checkDate('openDate'),dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'openDateEnd\');}',minDate:'#F{$dp.$D(\'signDateStart\');}',isShowClear:false})"
+			onfocus="WdatePicker({onpicking:checkDate('openDate'),dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'openDateEnd\');}',minDate:'#F{$dp.$D(\'signDateStart\');}',isShowClear:false})"
 			readonly="readonly"
-			value="<fmt:formatDate value="${term.signDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>"
+			value="<fmt:formatDate value="${term.signDateEnd}" pattern="yyyy-MM-dd"/>"
 			/>
 			<font id="signDateErr" style="color: red;"></font>
 		</li>
@@ -86,7 +86,7 @@
 		</li>
 		--%>
 		<li>
-			<span>提示：</span>
+			<span>备注说明：</span>
 			<textarea id="comments" name="term.comments" cols="" rows=""><c:out value="${term.comments}" escapeXml="true"></c:out></textarea>
 			<font id="commentsErr" style="color: red;"></font>
 		</li>

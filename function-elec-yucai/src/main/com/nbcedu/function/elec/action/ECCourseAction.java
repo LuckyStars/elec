@@ -187,7 +187,8 @@ public class ECCourseAction extends ElecBaseAction {
 			}
 		}
 		
-		ExlAnnotationUtil.export(term.getName()+"课程列表", voList);
+		
+		ExlAnnotationUtil.export(term.getName()+"校本选课课程列表", voList);
 		return null;
 	}
 	
@@ -352,8 +353,8 @@ public class ECCourseAction extends ElecBaseAction {
 		if(StringUtils.isNotBlank(entity.getCourseComment())){
 			entity.setCourseComment(StringUtil.toHtml(entity.getCourseComment()));
 		}
-		entity.setSignStartDate(DateUtil.str2Date(ecCond.getSignStartDateStr(), "yyyy-MM-dd HH:mm:ss"));
-		entity.setSignEndDate(DateUtil.str2Date(ecCond.getSignEndDateStr(), "yyyy-MM-dd HH:mm:ss"));
+		entity.setSignStartDate(DateUtil.str2Date(ecCond.getSignStartDateStr(), "yyyy-MM-dd"));
+		entity.setSignEndDate(DateUtil.str2Date(ecCond.getSignEndDateStr(), "yyyy-MM-dd"));
 
 		entity.setClassStartDate(DateUtil.str2Date(ecCond.getClassStartDateStr(), "yyyy-MM-dd"));
 		entity.setClassEndDate(DateUtil.str2Date(ecCond.getClassEndDateStr(), "yyyy-MM-dd"));

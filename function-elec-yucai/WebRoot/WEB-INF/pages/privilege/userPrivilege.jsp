@@ -14,7 +14,7 @@
 <script type="text/javascript" src="${med}/js/privilege/userPrivilege.js"></script>
 <script type="text/javascript" src="${med}/js/common/agent.js" ></script>
 </head>
-<body>
+<body style="background:#f0f8fc">
 <!--弹出层   update-->
 <div id="shade" class="shade" style="width: 100%; height: 931px;display:none" >
 <form id="updateRole" action="${prc }/elec/ecuserUpdatePgAction.action" method="post" >
@@ -72,7 +72,7 @@
 
 <!--弹出层-->
 <div class="con_conent fixed">
-    <h1 class="tit"><span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" />权限管理</span><a class="fr" href="${prc}/elec/index.action">返回</a></h1>
+    <h1 class="tit"><span class="title">校本选课权限管理</span><a class="fr" href="${prc}/elec/index.action">返回</a></h1>
  
     <h2><a class="b_btn" id="selectTeacher" href="javascript:">增加</a><a class="b_btn" onclick="delAll('${userName }','${page.offset}')" href="javascript:">批量删除</a>
     <form action="${prc }/elec/listPgPgAction.action" method="post" id="condForm">

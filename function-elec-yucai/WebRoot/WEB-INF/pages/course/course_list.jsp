@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -83,9 +83,9 @@ $(function(){
         	<span id="xqb_title">${ecTerm.name }</span>
         </div>
         <p>报名时间：
-        	<fmt:formatDate value="${ecTerm.signDateStart}" pattern="yyyy-MM-dd HH:mm" />
+        	<fmt:formatDate value="${ecTerm.signDateStart}" pattern="yyyy-MM-dd" />
 			-
-			<fmt:formatDate value="${ecTerm.signDateEnd}" pattern="yyyy-MM-dd HH:mm" />
+			<fmt:formatDate value="${ecTerm.signDateEnd}" pattern="yyyy-MM-dd" />
         </p>
         <c:if test="${!empty ecTerm.comments }">
         <p class="red">
@@ -110,7 +110,7 @@ $(function(){
 		<script type="text/javascript">
 			$("select[name='ecCond.typeId']").val("${ecCond.typeId}");
 		</script>
-        <label style="margin-left: 10px;"><%--年级范围--%><fmt:message key="i18nGradeNames" bundle="${bundler}" />：</label>
+        <label style="margin-left: 10px;"><%--年级范围--%>适用年级：</label>
         <select id="cc" style="width:92px;" panelHeight="auto" ></select>
 		<div id="sp" style="line-height:22px; " >
 			<c:forEach items="${ucGradeList}" var="ucGrade" >
@@ -127,9 +127,9 @@ $(function(){
         <a class="s_btn" href="javascript:void(0);" style="font-size:12px; margin-top:11px;" id="sel_teacher_a">添加</a>
         </c:if>
         
-        <span class="spanleft" style="width:180px; float:left; margin-left:10px;">
+        <span class="spanleft" style="width:150px; float:left; margin-left:10px;">
         <label style="margin-left: 0px; width: 60px;">课程名称：</label>
-        <input name="ecCond.name" id="trimVal" value="${ecCond.name}" type="text" maxlength="20" style="width:100px; height:18px;" />
+        <input name="ecCond.name" id="trimVal" value="${ecCond.name}" type="text" maxlength="20" style="width:70px; height:18px;" />
         <input name="ecCond.termId" type="hidden" id="currentTerm_id" value="${ecCond.termId }" />
         </span>
     </h2>
@@ -154,7 +154,7 @@ $(function(){
 		<%-- 排除：任课教师自己 --%>
 		<c:if test="${!curUser.courseTeacherViewable }">
 		<c:if test="${btnBool}">
-        <a class="d_btn" href="javascript:void(0);" id="add_course_btn"><span>录入课程</span></a>
+        <a class="d_btn" href="javascript:void(0);" id="add_course_btn"><span>新建课程</span></a>
         </c:if>
         </c:if>
     </h3>
@@ -166,7 +166,7 @@ $(function(){
             <th width="7%" scope="col">课程类别</th>
             <th width="9%" scope="col">课程名称</th>
             <th width="10%" scope="col">任课老师 </th>
-            <th width="20%" scope="col">上课时间</th>
+            <th width="20%" scope="col">开课时间</th>
             <th width="13%" scope="col"><%--年级范围--%><fmt:message key="i18nGradeNames" bundle="${bundler}" /></th>
             <th width="10%" scope="col">上课地点 </th>
             <th width="13%" scope="col">已选人数/限定人数</th>
@@ -194,17 +194,28 @@ $(function(){
 	        	${pp.teacherNames}
 	        	</div>
 	        </td>
-	        <td >
-	        	<c:if test="${!empty pp.classhourList && (fn:length(pp.classhourList)>0)}">
-			    <c:forEach items="${pp.classhourList}" var="ch" varStatus="chStats" >
-			   	${ch.weekIndexStr } 
-			   	<fmt:formatDate value="${ch.weekStartTime}" pattern="HH:mm:ss" />
-				-
-				<fmt:formatDate value="${ch.weekEndTime}" pattern="HH:mm:ss" />
-				<c:if test="${!chStats.last}"><br/></c:if>
-			    </c:forEach>
-			    </c:if>
+			
+	       <c:if test="${signType=='yucai'}">
+	        <td>
+	         <label></label><fmt:formatDate value="${pp.classStartDate}" pattern="yyyy-MM-dd" />
 	        </td>
+	        </c:if>
+	         <c:if test="${signType=='shijia'}">
+	        <td >
+	       		
+		        	<c:if test="${!empty pp.classhourList && (fn:length(pp.classhourList)>0)}">
+				    <c:forEach items="${pp.classhourList}" var="ch" varStatus="chStats" >
+				   	${ch.weekIndexStr } 
+				   	<fmt:formatDate value="${ch.weekStartTime}" pattern="HH:mm:ss" />
+					-
+					<fmt:formatDate value="${ch.weekEndTime}" pattern="HH:mm:ss" />
+					<c:if test="${!chStats.last}"><br/></c:if>
+				    </c:forEach>
+				    </c:if>
+			 	 
+	        </td>
+	        </c:if>
+		
 	        <td >
 	        	<div style="width:95px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${pp.gradeNames }">
 	        	${pp.gradeNames}

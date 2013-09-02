@@ -18,8 +18,8 @@ a:focus { outline: none; }
 .fr{float: right; }
 .txl{text-align:left;}
 .tz{text-align:center;}
-.con_conent{height:931px;background:#f0f8fc;}
-.con_conents{width:754px;height:931px;background:#f0f8fc url(../images/bg_small.jpg) no-repeat top;}
+.con_conent{/*height:931px;*/background:#f0f8fc;width:778px;}
+.con_conents{width:754px;/*height:931px;*/background:#f0f8fc url(../images/bg_small.jpg) no-repeat top;}
 .bold{font-weight:bold;}
 .red{color:#F00;}
 .blue{color:#275a8d;}

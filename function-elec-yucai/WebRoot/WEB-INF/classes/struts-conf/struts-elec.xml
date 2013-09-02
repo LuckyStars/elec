@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="function-elec" namespace="/elec" extends="struts-elec-base">
+		
+		<!-- 公共Action -->
+		<action name="*EcCommon" class="ecCommonAction" method="{1}" >
+		</action>
+		
+		<!-- 课程管理 -->
+		<action name="*EcCourse" class="ecCourseAction" method="{1}" >
+			<result name="list" >/WEB-INF/pages/course/course_list.jsp</result>
+			<result name="addUI" >/WEB-INF/pages/course/course_add.jsp</result>
+			<result name="editUI" >/WEB-INF/pages/course/course_edit.jsp</result>
+			<result name="view" >/WEB-INF/pages/course/course_view.jsp</result>
+			<result name="reload" type="redirect">listEcCourse.action</result>
+		</action>
+		
+		<!-- 首页 -->
+		<action name="index" class="indexAction" method="execute">
+			<result name="teacher">/WEB-INF/teacherIndex.jsp</result>
+			<result name="ecsign" type="redirect" >ecsignTypeSigAction.action</result>
+		</action>
+		
+		<!-- 管理地点 -->
+		<action name="*placeAction" class="ecPlaceAction" method="{1}">
+			<result name="list">/WEB-INF/pages/place/place_list.jsp</result>
+		</action>
+		
+		<!-- 班主任老师管理 -->
+		<action name="*headerMaster" class="ecHeaderMaster" method = "{1}">
+			<result  name = "stuList"  >/WEB-INF/pages/headerMaster/listStu.jsp</result>
+			<result  name = "ourList"  >/WEB-INF/pages/headerMaster/listOurClass.jsp</result>
+			<result  name = "list"  >/WEB-INF/pages/headerMaster/listAllCourse.jsp</result>
+				<!-- 文件下载 -->
+			<result name="success" type="stream">
+	      	 	<param name="contentType">application/octet-stream</param> 
+	     	 	<param name="inputName">inputStream</param>          
+	    	 	<param name="contentDisposition">attachment;filename="${file}"</param>
+	     		<param name="bufferSize">4096</param>
+	    	</result>
+		</action>
+		
+		<!-- 学期 -->
+		<action name="*Term" class="termAction" method="{1}">
+			<result name="list">/WEB-INF/pages/term/list.jsp</result>
+			<result name="add">/WEB-INF/pages/term/add.jsp</result>
+			<result name="edit">/WEB-INF/pages/term/edit.jsp</result>
+			<result name="view">/WEB-INF/pages/term/view.jsp</result>
+			<result name="timeup">/WEB-INF/pages/term/timeup.jsp</result>
+			<result name="hascourse">/WEB-INF/pages/term/hascourse.jsp</result>
+			<interceptor-ref name="termStack">
+			</interceptor-ref>
+		</action>
+		<!--权限管理-->
+		<action name="*PgAction" class="ecuPgAction" method="{1}" >
+			<result name="list" >/WEB-INF/pages/privilege/userPrivilege.jsp</result>
+		</action>
+		
+		<!--家长报名-->
+		<action name="*SigAction"  class="ecsignAction" method="{1}" >
+			<result name="index" >/WEB-INF/pages/ecsign/ecsignIndex.jsp</result>
+			<result name="ecsign" >/WEB-INF/pages/ecsign/ecsign.jsp</result>
+			<result name="ecsignMy" >/WEB-INF/pages/ecsign/ecsignMy.jsp</result>
+			<result name="ecsignDetails" >/WEB-INF/pages/ecsign/ecsignDetails.jsp</result>
+			<result name="ecsignType"  >/WEB-INF/pages/ecsign/ecsignType.jsp</result>
+		</action>
+		<!--任课老师查看已报名学生-->
+		<action name="*StudentInfo" class="stuInfoAction" method="{1}"> 
+			<result name="list">/WEB-INF/pages/stuInfo/list.jsp</result>
+			<result name="reList" type="redirectAction">
+			<param name="actionName">listStudentInfo</param>
+			<param name="course.id">${course.id}</param>
+			</result>
+		</action>
+	</package>
+</struts>

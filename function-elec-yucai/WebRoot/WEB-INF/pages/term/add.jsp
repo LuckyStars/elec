@@ -17,7 +17,7 @@
 	    <span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span>
 	  	</h1>
 		<div class="sub_title">
-			<h2>新的学期</h2>
+			<h2>选课学期</h2>
 		</div>
 		<form action="${prc}/elec/addTerm.action" method="post" onsubmit="return checkForm()">
 			<%@ include file="/WEB-INF/pages/term/form.jsp" %>

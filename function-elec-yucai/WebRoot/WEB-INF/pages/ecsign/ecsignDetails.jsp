@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>学生报名</title>
+<title>学生报名课程详细</title>
 <link href="${med}/css/xqstyle.css" rel="stylesheet" type="text/css" />
 <link href="${med }/css/reset.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${med}/js/jquery-1.8.0.min.js"></script>
@@ -81,7 +81,7 @@ var messages="${message}";
 </div>
 <!--弹出层-->
 <div class="con_conent fixed" style="height: 100%;" >
-    <h1 class="tit"><span class="title"><fmt:message key="i18nTermTitle" bundle="${bundler}" /></span></h1>
+    <h1 class="tit"><span class="title">校本选课</span></h1>
     <h1><span>课程详细</span></h1>
      <div class="btn" style="margin-left:200px;" >
       <c:if test="${ecCourseVO.maxStudentNum<=ecCourseVO.currentStudentNum 
@@ -95,22 +95,24 @@ var messages="${message}";
 	    <c:if test="${!ecSignCourseVo.signStarState && !ecSignCourseVo.signUpState && (term.maxCourse>courseCount||term.maxCourse==0) }">
        		<a  href="javascript:" >报名没有开启</a>
         </c:if>
-        <c:if test="${ecCourseVO.maxStudentNum>ecCourseVO.currentStudentNum 
+		<%-- 
+		 <c:if test="${ecCourseVO.maxStudentNum>ecCourseVO.currentStudentNum 
 			        &&ecSignCourseVo.signStarState && !ecSignCourseVo.signUpState && (term.maxCourse>courseCount||term.maxCourse==0) }">
 			<a  onclick="addSign('${ecCourseVO.id}','${ecCourseVO.name }')" href="javascript:">选课</a>
-	    </c:if>
+			</c:if>
+			--%>
+
 	    <c:if test="${ecSignCourseVo.signUpState  && ecsignType==1 }"> 
 	       	<a 	onclick="delSignShiJia('${ecCourseVO.id }',${ecCourseVO.classhourRequire}
 	       	,'${ecCourseVO.name }','${ecSignCourseVo.ecSign.id }','${ecSignCourseVo.ecSign.classhourIds }')"
 	       	 href="javascript:" >退课/报课时</a>
 	   </c:if>
-       <a href="javascript:" onclick="historygo()" >返回</a>
      </div>
      <div class="clear"></div>
     <div class="text_box" style="height: 100%;" >
       
         <c:if test="${!empty ecCourseVO.courseComment }">
-        	<p class="red" style="width:660px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${ecCourseVO.courseComment}">
+        	<span style="margin:0 auto; display:block; width:600px; word-break:keep-all; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${term.comments }">
         	选课提示：${ecCourseVO.courseComment }
         	</p>
         </c:if>
@@ -138,6 +140,7 @@ var messages="${message}";
              	 至  
              <fmt:formatDate value="${ecCourseVO.signEndDate}" pattern="yyyy年MM月dd日 HH:mm" />
 		</p>
+		<%-- 
 		 <p>
             <label>每周课时：</label>${ecCourseVO.classhourNum } 课时/周
 		</p>
@@ -151,13 +154,16 @@ var messages="${message}";
 				<c:if test="${!chStats.last}"><br/></c:if>
 			    </c:forEach>
 		</div>
+		--%>
         <p>
             <label>上课地点：</label>${ecCourseVO.startPlace.name }
 		</p>
+		<%-- 
 		<p>
                 <label>放学地点：</label>
                 ${ecCourseVO.endPlace.name }
         </p>
+        --%>
           <p style="">
             <a href="javascript:" id="showClose" style="color:#275A8D;">展开课程内容详情↓</a>
 		</p>
@@ -168,6 +174,10 @@ var messages="${message}";
                 ${ecCourseVO.courseContent}
                 </div>
                 </p>
+				<p>
+                <label>学生要求：</label>
+                <div class="notContent">${ecCourseVO.courseRequire}</div>
+			</p>
             <p>
                 <label>备注：</label>
                 <div class="notContent" > ${ecCourseVO.courseNote}</div></p>

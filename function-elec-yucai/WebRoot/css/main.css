@@ -30,7 +30,7 @@ h4 { font-size:24px; color:#333; text-align:center; }
 /*---------------
  中-间
  ----------------*/
-.main { background:#f0f8fc; width:788px; text-align:center; margin:0 auto; height:100%; }
+.main { background:#f0f8fc; width:778px; text-align:center; margin:0 auto; height:100%; }
 /*---------------
  一-级-标-题
  ----------------*/
@@ -77,10 +77,10 @@ h4 { font-size:24px; color:#333; text-align:center; }
 .button_border ul li .button { background: #1e9ecf url(../images/button_bg.gif) repeat-x; width:90px; height:26px; line-height:26px; color:#FFFFFF; font-size:14px; font-weight:bold; border:1px solid #0c4e9f; cursor:pointer; }
 .time { font-size:14px; padding-top:10px; }
 .prompt { font-size:14px; color:#FF0000; padding-top:5px; }
-.list_title { font-size:14px; text-align:left; padding-left:30px; height:24px; line-height:24px; width:768px; position:relative; }
+.list_title { font-size:14px; text-align:left; padding-left:30px; height:24px; line-height:24px; width:738px; position:relative; }
 .small_button { position:absolute; left:650px; top:0; }
 .small_button ul { text-align:center; margin:0 auto; }
-.small_button ul li { background:url(../images/small_button_bg.gif) repeat-x; padding:0 10px; height:19px; line-height:19px; border:1px solid #0c4e9f; float:left; margin-left:10px; color:#FFFFFF; font-size:12px; }
+.small_button ul li { background:url(../images/small_button_bg.gif) repeat-x; padding:0 5px; height:19px; line-height:19px; border:1px solid #0c4e9f; float:left; margin-left:10px; color:#FFFFFF; font-size:12px; }
 .small_button ul li img { padding-right:5px; }
 /*---------------
  表-格

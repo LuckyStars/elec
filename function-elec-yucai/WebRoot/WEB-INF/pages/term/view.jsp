@@ -19,20 +19,20 @@
 	<div class="edit_course">
 		<ul>
 			<li>
-				<span style="font-weight: bold;">学期名称:</span>
+				<span style="font-weight: bold;">选课学期名称:</span>
 				<c:out value="${term.name}"escapeXml="true"></c:out>
 			</li>
 			<li>
-				<span style="font-weight: bold;">开放日期:</span>
+				<span style="font-weight: bold;">选课开放日期:</span>
 				<fmt:formatDate value="${term.openDateStart}" pattern="yyyy年MM月dd日" />
 				至
 				<fmt:formatDate value="${term.openDateEnd}" pattern="yyyy年MM月dd日" />
 			</li>
 			<li>
-				<span style="font-weight: bold;">默认报名时间:</span>
-				<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日 HH:mm:ss"/>
+				<span style="font-weight: bold;">选课报名时间:</span>
+				<fmt:formatDate value="${term.signDateStart}" pattern="yyyy年MM月dd日"/>
 				至
-				<fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日 HH:mm:ss"/>
+				<fmt:formatDate value="${term.signDateEnd}" pattern="yyyy年MM月dd日"/>
 			</li>
 			<li>
 				<span style="font-weight: bold;">最大选课数:</span>
@@ -54,7 +54,7 @@
 				<fmt:formatDate value="${term.lessonDateEnd}" pattern="yyyy年MM月dd日" />
 			</li>--%>
 			<li>
-			<span style="font-weight: bold;">学期提示:</span>
+			<span style="font-weight: bold;">备注说明:</span>
 				<div style="width:600px;overflow:hidden;word-warp:break-word;word-break:break-all;">
 				<c:out value="${term.comments}" escapeXml="true"></c:out>
 				</div>
