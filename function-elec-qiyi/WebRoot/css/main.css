@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* CSS Document */
+/*-------------------
+  页-面-元-素(全局)
+  ------------------*/
+body { color: #333; font-family:"宋体", Arial; line-height:18px; font-size:12px; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin:0; padding:0; }
+input { border:1px solid #7e9dba; background:#FFFFFF; }
+ul, li { list-style:none; }
+.fr{float: right;padding-right:10px; }
+fieldset, img { border:0; }
+html, body { width:100%; height:100%; background-color:#f0f8fc; text-align:center; margin:0 auto; }
+table { width:100%; border:0; border-collapse:collapse; word-spacing:0; }
+a:link, a:visited, a:hover { text-decoration:none; color: #275a8d; }
+a:hover { text-decoration:underline; }
+/*---------------
+  清-除-浮-动(clear)
+  ----------------*/
+.cl { clear:both; overflow:hidden; *height:0;
+}
+/*---------------
+ 标-题
+ ----------------*/
+h1 { font-size:13px; font-weight:bold; text-align:left; color:#369; }
+h1.tit{height:36px;line-height:36px;font-size:12px;background:#f0f8fc;border-bottom:#bcd9ea solid 2px;}
+h1.tit span.title{*width:80px;padding-left:30px;color:#336699;float:left;background:url(../images/tit.gif) no-repeat left;}
+h2 { font-size:14px; font-weight:bold; text-align:left; }
+h3 { font-size:12px; }
+h4 { font-size:24px; color:#333; text-align:center; }
+/*---------------
+ 中-间
+ ----------------*/
+.main { background:#f0f8fc; width:778px; text-align:center; margin:0 auto; height:100%; }
+/*---------------
+ 一-级-标-题
+ ----------------*/
+/*-- 
+.title { background:url(../images/icon.gif) no-repeat left 3px; padding-left:25px; height:20px; line-height:20px; text-align:left; float:left; border-bottom:2px solid #bcd9ea; padding-top:5px; width:763px; }
+--*/
+.title h1 { float:left; }
+.title_h4 { margin-top:20px; }
+.title .welcome { float:left; margin-left:20px; }
+/*---------------
+ 切-换-菜-单
+ ----------------*/
+.menu_border { float:left; margin-top:10px; background:url(../images/menu_bg.gif) repeat-x; display:block; width:788px; height:37px; border-bottom:1px solid #a9d0e7; border-top:1px solid #a9d0e7; position:relative; }
+.menu_border .text { position:absolute; top:10px; right:20px; font-size:14px; }
+.menu_border ul { position:absolute; bottom:-1px; _bottom:-2px; left:10px; }
+.menu_border ul li { float:left; padding-left:10px; }
+.menu_border ul li a:link, .menu_border ul li a:visited, .menu_border ul li a:hover { width:121px; height:39px; color:#275a8d; display:block; line-height:39px; font-size:14px; }
+.menu_border ul li a:hover { width:121px; height:39px; line-height:39px; }
+.menu_border ul li.selected a:link, .menu_border ul li.selected a:visited, .menu_border ul li.selected a:hover { background:url(../images/menu_selected.gif) no-repeat; width:121px; height:39px; color:#275a8d; line-height:39px; text-decoration:none; }
+.menu_border ul li.big_selected a:link, .menu_border ul li.big_selected a:visited, .menu_border ul li.big_selected a:hover { background:url(../images/big_menu_selected.gif) no-repeat; width:161px; height:39px; color:#275a8d; line-height:39px; text-decoration:none; }
+/*---------------
+ 二-级-标-题
+ ----------------*/
+.sub_title { background:url(../images/arrow.gif) no-repeat 10px; padding-left:25px; height:25px; line-height:25px; text-align:left; float:left; border-bottom:1px solid #bdc5ca; padding-top:5px; width:763px; margin-top:10px; position:relative; }
+.return { position:absolute; right:20px; top:8px; font-size:14px; }
+/*---------------
+ 信-息-列-表
+ ----------------*/
+.edit_course { float:left; margin-top:10px; text-align:left; padding-left:35px; }
+.popup_border .edit_course { padding-left:10px; }
+.edit_course ul li { padding-top:10px; text-align:left; clear:left; }
+.edit_course ul li span { text-align:right; width:85px; display:inline-block; float:left; }
+.edit_course ul li textarea { height:80px; width:430px; border:1px solid #7e9dba; background:#FFFFFF; text-align:left; float:left; }
+.edit_course ul li select { width:151px; border:1px solid #7e9dba; background:#FFFFFF; text-align:left; float:left; }
+.edit_course ul li select.short { width:225px; }
+.edit_course ul li textarea.short { width:218px; padding-left:5px; font-size:12px; height:173px; }
+/*---------------
+ 按-钮
+ ----------------*/
+.button_border { margin-top:20px; padding-left:289px; }
+#one { padding-left:339px; }
+.button_border ul { text-align:center; margin:0 auto; }
+.button_border ul li { float:left; padding-left:10px; }
+.button_border ul li .button { background: #1e9ecf url(../images/button_bg.gif) repeat-x; width:90px; height:26px; line-height:26px; color:#FFFFFF; font-size:14px; font-weight:bold; border:1px solid #0c4e9f; cursor:pointer; }
+.time { font-size:14px; padding-top:10px; }
+.prompt { font-size:14px; color:#FF0000; padding-top:5px; }
+.list_title { font-size:14px; text-align:left; padding-left:30px; height:24px; line-height:24px; width:738px; position:relative; }
+.small_button { position:absolute; left:650px; top:0; }
+.small_button ul { text-align:center; margin:0 auto; }
+.small_button ul li { background:url(../images/small_button_bg.gif) repeat-x; padding:0 5px; height:19px; line-height:19px; border:1px solid #0c4e9f; float:left; margin-left:10px; color:#FFFFFF; font-size:12px; }
+.small_button ul li img { padding-right:5px; }
+/*---------------
+ 表-格
+ ----------------*/
+.table_border { border-bottom:1px solid #a2b1c3; }
+.table_border tr#height { height:50px; }
+.table_border tr.table_title { background:url(../images/table_title_bg.gif) repeat-x; height:29px; line-height:29px; border-bottom:1px solid #a2b1c3; }
+.table_border tr { height:24px; line-height:24px; }
+.table_border tr.second { background:#d5e0ee; }
+.table_border tr td.first { padding-left:30px; position:relative; display:block; }
+.table_selected { position:absolute; top:5px; left:10px; }
+/*---------------
+ 弹-出-层
+ ----------------*/
+.popup_border { width:260px; padding:1px; padding-bottom:10px; border:1px solid #2a609f; background:#FFFFFF; float:left; }
+.big { width:360px; }
+.popup_border h2 { background:url(../images/title_bg.gif) repeat-x; height:37px; line-height:37px; color:#FFFFFF; text-align:left; padding-left:15px; position:relative; }
+.popup_border .close { position:absolute; right:10px; top:10px; }
+.popup_border .success { font-size:14px; font-weight:bold; padding-top:10px; }
+.popup_border .text { text-align:left; padding-left:10px; padding-right:10px; padding-top:10px; }
+.popup_border .button_border { float:left; margin-top:15px; padding-left:75px; }
+.popup_border #two { margin-top:15px; padding-left:25px; }
+.popup_border .button_border ul { }
+.small_input { width:24px; text-align:center; height:19px; line-height:19px; }
+.red { color:#FF0000; }
+/*---------------
+ 翻-页
+ ----------------*/
+.flip_border { float:left; margin-bottom:5px; margin-top:10px; width:788px; }
+.flip { float:left; }
+.flip_text { float:right; }
+.flip ul li { float:left; padding-right:10px; }
+.flip_text ul li { float:left; padding-left:10px; }
+.flip_button { background:url(../images/flip_button_bg.gif) repeat-x; width:70px; height:21px; line-height:21px; color:#123890; }
+.go { background:url(../images/flip_button_bg.gif) repeat-x; width:30px; height:21px; line-height:21px; color:#123890; }
+.flip_border .small_button { float:left; position:static; }

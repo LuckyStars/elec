@@ -1,0 +1,51 @@
+*应用部署
+	请使用
+	http://code.nbcedu.com:8080/nexus/index.html#nexus-search;quick~function-elec
+	下载war包
+	
+	放入%TOMCAT_HOME%/webapps/目录下
+	启动tomcat解包后删除war包
+	
+	进入function-elec\WEB-INF\classes目录
+	修改clientconfig.properties与jdbc.properties中的
+	jdbc.url
+	jdbc.username
+	jdbc.password
+	属性为目标数据库url,用户名和密码
+	
+	修改config.properties文件中的onOff属性为true
+
+*数据库初始化
+	在mysql中[按顺序]运行
+	https://svn.nbcedu.com/svn/PD_BIZPLATFORM/dev/elec/resource/db/t_elec.sql
+	https://svn.nbcedu.com/svn/PD_BIZPLATFORM/dev/elec/resource/db/pro.sql
+	文件
+
+*修改单点登陆
+
+	修改function-elec项目下的/WEB-INF/web.xml
+	中sso的ip地址和端口号为ssoserver应用对应的ip和端口号
+
+	找到单点登陆服务器的tomcat
+	修改ssoserver中WEB-INF目录下
+	deployerConfigContext.xml文件
+	找到
+	<bean id="systemInfoHandler"
+			class="org.jasig.cas.cesso.jdbc.SystemInfoFileHandler">
+		<property name="validsystem">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	节点
+	在
+	<list></list>
+	节点中增加一个节点
+	<value>function-elec</value>
+
+
+*门户后台功能注册
+	应用入口地址为
+	http://ip:port/function-elec/
+

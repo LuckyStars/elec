@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+		
+		<bean name="ecsignTimerDevice" class="com.nbcedu.function.elec.util.ECSignTimerDevice" > 
+			<property name="signCreateTime" value="${signCreateTime}" ></property>
+			<property name="onOff" value="${onOff}" ></property>
+		</bean>
+		
+		<!-- 报名清理定时器设置 -->
+		<bean id="ecsignTimerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">   
+		   <property name="timerTask"  ref="ecsignTimerDevice" ></property>   
+		   <property name="period"><value>${periodTime}</value></property>   
+		   <property name="delay"><value>${delayTime}</value></property>   
+		   <!-- 注：period 表示的是 每隔多长时间就进行一次计时任务，单位是ms
+       			delay表示的是 服务启动后延时多长时间，开始计时任务，单位是 ms 
+		 	-->
+		</bean> 
+		<!-- 注册启动定时器任务 -->
+		<bean class="org.springframework.scheduling.timer.TimerFactoryBean">   
+		   <property name="scheduledTimerTasks">      
+		      <list><ref bean="ecsignTimerTask"/></list>
+		   </property> 
+	    </bean>
+</beans>

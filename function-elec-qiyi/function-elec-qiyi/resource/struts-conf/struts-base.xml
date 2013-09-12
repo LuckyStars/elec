@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="struts-elec-base" extends="struts-default" abstract="true" >
+		
+		<!-- 拦截器 -->
+		<interceptors>
+			<interceptor name="elecLoginInterceptor" class="elecLoginInterceptor" />
+			<interceptor name="termStartInterceptor" class="termStartInterceptor">
+				<param name="includeMethods">gotoAdd,add,update,edit</param>
+			</interceptor>
+			<interceptor-stack name="Eleclogin">
+				<interceptor-ref name="defaultStack">  
+					<param name="exception.logEnabled">true</param>  
+					<param name="exception.logLevel">error</param>  
+				</interceptor-ref>	
+				<interceptor-ref name="elecLoginInterceptor" />
+			</interceptor-stack>
+			<interceptor-stack name="termStack">
+				<interceptor-ref name="Eleclogin" />
+				<interceptor-ref name="termStartInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="Eleclogin" />
+		  
+		<!-- 全局result 
+		<global-results>
+			<result name="error" >/WEB-INF/common/500.jsp</result>
+			<result name="noRole">/WEB-INF/common/403.jsp</result>
+		</global-results>
+		-->
+		
+		<!-- 全局捕获异常 -->
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>
+		</global-exception-mappings>
+		
+		
+	</package>
+</struts>

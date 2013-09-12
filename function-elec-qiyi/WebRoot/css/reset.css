@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+/*********************************** css reset ***********************************/
+/* 清除内外边距 */
+.notContent h1, .notContent h2, .notContent h3, .notContent h4, .notContent h5, .notContent h6, .notContent hr, .notContent p, .notContent blockquote, /* structural elements 结构元素 */
+.notContent dl, .notContent dt, .notContent dd, .notContent ul, .notContent ol, .notContent li, /* list elements 列表元素 */
+.notContent pre, /* text formatting elements 文本格式元素 */
+.notContent fieldset, .notContent lengend, .notContent button, .notContent input, .notContent textarea, /* form elements 表单元素 */
+.notContent th, .notContent td { /* table elements 表格元素 */
+    margin: 0 !important;
+    padding: 0 !important;
+    height : auto !important;
+}
+
+/* 设置默认字体 */
+.notContent button, .notContent input, .notContent select, .notContent textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif !important; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+.notContent h1 { font-size: 18px !important; /* 18px / 12px = 1.5 */ }
+.notContent h2 { font-size: 16px !important; }
+.notContent h3 { font-size: 14px !important; }
+.notContent h4, .notContent h5, .notContent h6 { font-size: 100% !important; }
+
+.notContent address, .notContent cite, .notContent dfn, .notContent em, .notContent var { font-style: normal !important; } /* 将斜体扶正 */
+.notContent code, .notContent kbd, .notContent pre, .notContent samp, .notContent tt { font-family: "Courier New", Courier, monospace !important; } /* 统一等宽字体 */
+.notContent small { font-size: 12px !important; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+.notContent ul, .notContent ol, .notContent li { list-style: disc outside none !important; }
+
+/* 重置文本格式元素 */
+.notContent a { text-decoration: none !important; }
+.notContent a:hover { text-decoration: underline !important; }
+
+.notContent abbr[title], .notContent acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+	border-bottom: 1px dotted !important;
+	cursor: help !important;
+}
+
+.notContent q:before, .notContent q:after { content: '' !important; }
+
+/* 重置表单元素 */
+.notContent legend { color: #000 !important; } /* for ie6 */
+.notContent fieldset, .notContent img { border: none !important; } /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+.notContent button, .notContent input, .notContent select, .notContent textarea {
+    font-size: 100% !important; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+/* 重置表格元素 */
+.notContent table {
+	border-collapse: collapse !important;
+	border-spacing: 0 !important;
+}
+
+/* 重置 hr */
+.notContent hr {
+    border: none !important;
+    height: 1px !important;
+}
+/*********************************** css reset ***********************************/
+.notContent {
+   padding: 0 10px 10px 60px;
+   word-break:break-all;
+   word-wrap:break-word ;
+}
+.notContent .fl {
+    float: none !important;
+}
+.text_box p {
+	height: auto !important;
+}
