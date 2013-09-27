@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+ 	<bean id="BSBookSiteAction" class="com.nbcedu.function.booksite.action.BookSiteAction" scope="prototype">
+		<property name="bookSiteBiz">
+			<ref bean="bookSiteBiz" />
+		</property>
+		<property name="activityTypeBiz">
+			<ref bean="activityTypeBiz" />
+		</property>
+		<property name="activityLevelBiz">
+			<ref bean="activityLevelBiz" />
+		</property>
+		<property name="siteBiz">
+			<ref bean="siteBiz" />
+		</property>
+		<property name="siteStatusBiz">
+			<ref bean="siteStatusBiz" />
+		</property>
+		<property name="userRoleBiz">
+			<ref bean="bsUserRoleBiz" />
+		</property>
+	</bean>
+	<bean id="BSBookManageAction" class="com.nbcedu.function.booksite.action.BSBookSiteAction"
+		scope="prototype">
+		<property name="bookSiteBiz">
+			<ref bean="bookSiteBiz" />
+		</property>
+		<property name="siteBiz">
+			<ref bean="siteBiz" />
+		</property>
+	</bean>
+	<bean name="BSSiteAction" class="com.nbcedu.function.booksite.action.SiteAction"
+		scope="prototype">
+		<property name="siteBiz">
+			<ref bean="siteBiz"/>
+		</property>
+		<property name="activityTypeBiz">
+			<ref bean="activityTypeBiz"/> 
+		</property>
+		<property name="bookSiteBiz">
+			<ref bean="bookSiteBiz"/> 
+		</property>
+		<property name="activityLevelBiz">
+			<ref bean="activityLevelBiz"/> 
+		</property>
+		<property name="siteStatusBiz">
+			<ref bean="siteStatusBiz"/>
+		</property>
+		<property name="userRoleBiz"
+			 ref="bsUserRoleBiz" />
+	</bean>
+	
+	<bean name="BSSiteStatusAction" class="com.nbcedu.function.booksite.action.SiteStatusAction" scope="prototype">
+		<property name="siteStatusBiz">
+			<ref bean="siteStatusBiz"/>
+		</property>
+	</bean>
+	
+	<bean name="BSActivityLevelAction" class="com.nbcedu.function.booksite.action.ActivityLevelAction" scope="prototype">
+		<property name="activityLevelBiz">
+			<ref bean="activityLevelBiz"/>
+		</property>
+		<property name="siteStatusBiz">
+			<ref bean="siteStatusBiz"/>
+		</property>
+		<property name="siteBiz">
+			<ref bean="siteBiz"/> 
+		</property>
+	</bean>
+	
+	<bean name="BSActivityTypeAction" class="com.nbcedu.function.booksite.action.ActivityTypeAction" scope="prototype">
+		<property name="activityTypeBiz">
+			<ref bean="activityTypeBiz"/>
+		</property>
+		<property name="siteStatusBiz">
+			<ref bean="siteStatusBiz"/>
+		</property>
+		<property name="siteBiz">
+			<ref bean="siteBiz"/>
+		</property>
+	</bean>
+	
+	<bean name="BookSiteUserAction" class="com.nbcedu.function.booksite.action.UserAction" scope ="prototype">
+		<property name="userRoleBiz" ref="bsUserRoleBiz" />
+		<property name="siteBiz" ref="siteBiz"/>
+	</bean>
+	<bean name="bookSiteRoleInterceptor" class="com.nbcedu.function.booksite.intercept.RoleInterceptor" scope ="prototype">
+		<property name="userRoleBiz" ref="bsUserRoleBiz" />
+	</bean>
+	
+	<bean name="BSStatisticsAction" class="com.nbcedu.function.booksite.action.StatisticsAction" scope ="prototype">
+		<property name="bookSiteBiz">
+			<ref bean="bookSiteBiz"/> 
+		</property>
+	</bean>
+	<bean name="BSAdminInterceptor" class="com.nbcedu.function.booksite.intercept.AdminIntercept" scope ="prototype">
+	</bean>
+	<bean name="BSMySiteAction" class="com.nbcedu.function.booksite.action.MySiteAction" scope="prototype">
+	<property name="bookSiteBiz" ref="bookSiteBiz"/>
+	<property name="activityLevelBiz" ref="activityLevelBiz"/>
+	<property name="activityTypeBiz" ref="activityTypeBiz"/>
+	</bean>
+	
+	<bean name="BSPendingSiteAction" class="com.nbcedu.function.booksite.action.PendingSiteAction"
+		 scope="prototype">
+		 <property name="bookSiteBiz">
+			<ref bean="bookSiteBiz" />
+		</property>
+	
+	</bean>
+	<bean name="BSAuditAction" class="com.nbcedu.function.booksite.action.AuditAction" 
+		scope="prototype">
+			<property name="bookSiteBiz">
+			<ref bean="bookSiteBiz" />
+		</property>
+	
+	</bean>
+	<!--↓=============AJAX=============↓-->
+	<!-- 	<dwr:configuration> 把非基本对象转换成ajax所认识到对象 -->
+	<!--
+		<dwr:convert class="com.nbcedu.function.booksite.model.User"
+		type="bean"></dwr:convert> <dwr:convert match="java.lang.Exception"
+		converter="exception"></dwr:convert> </dwr:configuration>
+	-->
+	<!--
+		<bean id="ajaxAction"
+		class="com.nbcedu.function.booksite.action.BookSiteAction" > <property
+		name="userBiz"> <ref bean="userBiz"/> </property> <property
+		name="siteBiz"> <ref bean="siteBiz"/> </property> <dwr:remote
+		javascript="searchByAjax"></dwr:remote>
+	-->	<!-- 在引入文件中用到这个名字 
+		</bean>
+	-->
+
+</beans>	
+	

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.nbcedu.function.booksite.model">
+	<class name="Site" table="T_BOOKSITE_SITE">
+
+		<id name="site_id" column="PK_SITE_ID" length="32" type="java.lang.String">
+			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+		</id>
+		
+		<property name="site_name" column="SITE_NAME"></property>
+		<property name="site_picName" column="SITE_PICNAME"></property>
+		<property name="site_editorPicName" column="SITE_EDITORPICNAME"></property>
+		<property name="site_area" column="site_area"></property>
+		<property name="site_capacity" column="site_capacity"></property>
+		<property name="site_address" column="site_address"></property>
+		<property name="site_other" column="site_other"></property>
+		<property name="siteType" column="siteType"></property>
+		<property name="siteController" column="siteController" length="2000"></property>
+		
+		<!-- 场馆级别 -->
+     	<idbag name="activityLevels" table="T_BOOKSITE_SITE_LEVEL" cascade="save-update" lazy="false">
+     		<collection-id type="string" length="32" column="PK_T_BOOKSITE_SITE_LEVEL_ID">
+     			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+     		</collection-id>
+     		<key column="SITE_NO"></key>												<!-- 外键列名 -->
+     		<many-to-many class="com.nbcedu.function.booksite.model.ActivityLevel" column="LEVEL_NO"/>
+     	</idbag>
+		
+		<!-- 场馆类型 -->
+     	<idbag name="activityTypes" table="T_BOOKSITE_SITE_TYPE" cascade="save-update" lazy="false">
+     		<collection-id type="string" length="32" column="PK_T_BOOKSITE_SITE_TYPE_ID">
+     			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+     		</collection-id>
+     		<key column="SITE_NO"></key>
+     		<many-to-many class="com.nbcedu.function.booksite.model.ActivityType" column="TYPE_NO"/>
+     	</idbag>
+		
+		<!-- 场馆状态 -->
+		<many-to-one name="siteStatus" class="com.nbcedu.function.booksite.model.SiteStatus"  cascade="save-update" lazy="false"><!-- cascade="save-update" 两个表保存和修改时进行级联(两个表的数据都变动) cascade="delete" 删除时进行级联 cascade="all" 添加和修改时进行级联，删除时不级联-->
+     		<column name="FK_SITESTATUS_NO"></column> <!-- 外键列名 -->
+     	</many-to-one>
+		
+		<!-- 预定场馆表单 -->
+		<set name="bookSites" cascade="save-update" inverse="true">
+     		<key column="FK_SITE_NO"></key>
+     		<one-to-many class="com.nbcedu.function.booksite.model.BookSite"/>
+     	</set>
+	</class>
+</hibernate-mapping>			

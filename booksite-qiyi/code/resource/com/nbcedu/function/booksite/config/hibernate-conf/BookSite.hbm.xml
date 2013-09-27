@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.nbcedu.function.booksite.model">
+	<class name="BookSite" table="T_BOOKSITE_BOOKSITE" ><!-- optimistic-lock="version" -->
+
+		<id name="bookSite_id" column="pk_BOOKSITE_ID" length="32" type="java.lang.String">
+			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+		</id>
+		<!--<version name="version" column="version" type="java.lang.Integer"></version>-->
+		 
+		<property name="bookSite_beginTime" column="bookSite_beginTime"></property>
+		<property name="bookSite_endTime" column="bookSite_endTime"></property>
+		<property name="bookSite_explain" column="bookSite_explain"></property>
+		<property name="bookSite_uploadDateTime" column="bookSite_uploadDateTime"></property>
+		<property name="bookSite_people" column="bookSite_people"></property>
+		<property name="bookSite_statusId" column="bookSite_statusId"></property>
+		<property name="bookSite_clashId" column="bookSite_clashId"></property>
+		<property name="auditId" column="auditId"></property>
+		<property name="auditName" column="auditName"></property>
+		<property name="auditDate" column="auditDate" type="timestamp"></property>
+		<property name="dutyId" column="dutyId"></property>
+		<property name="dutyName" column="dutyName"></property>
+		<property name="dutyExplain" column="dutyExplain"></property>
+		<property name="dutyDate" column="dutyDate" type="timestamp"></property>
+		
+		
+		<!-- 场馆 -->
+		<many-to-one name="site" class="com.nbcedu.function.booksite.model.Site">
+			<column name="FK_SITE_NO"></column>
+		</many-to-one>
+		
+		<!-- 场馆级别 -->
+		<many-to-one name="activityLevel" class="com.nbcedu.function.booksite.model.ActivityLevel">
+			<column name="FK_ACTIVITYLEVEL_NO"></column>
+		</many-to-one>
+		
+		<!-- 场馆类别 -->
+		<many-to-one name="activityType" class="com.nbcedu.function.booksite.model.ActivityType" >
+			<column name="FK_ACTIVITYTYPE_NO"></column>
+		</many-to-one>
+		
+		<!-- 人员 -->
+     	<!--
+     		<many-to-one name="user" class="com.nbcedu.core.privilege.model.User"  cascade="save-update" lazy="false">
+				<column name="FK_USER_NO"></column>
+			</many-to-one>
+		-->
+		<property name="userId" column="userId"></property>
+		<property name="userName" column="userName"></property>
+	</class>
+</hibernate-mapping>			 

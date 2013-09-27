@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<bean id="bookSiteLoader" class="com.nbcedu.function.booksite.biz.impl.BookSiteLoaderImpl"/>
+	<bean id="activityLevelBiz" class="com.nbcedu.function.booksite.biz.impl.ActivityLevelBizImpl">
+		<property name="activityLevelDao">
+			<ref bean="activityLevelDao"/>
+		</property>
+	</bean>	
+	<bean id="activityTypeBiz" class="com.nbcedu.function.booksite.biz.impl.ActivityTypeBizImpl">
+		<property name="activityTypeDao">
+			<ref bean="activityTypeDao"/>
+		</property>
+	</bean>
+	<bean id="bookSiteBiz" class="com.nbcedu.function.booksite.biz.impl.BookSiteBizImpl">
+		<property name="bookSiteDao">
+			<ref bean="bookSiteDao"/>
+		</property>
+	</bean>
+	<bean id="siteBiz" class="com.nbcedu.function.booksite.biz.impl.SiteBizImpl">
+		<property name="siteDao">
+			<ref bean="siteDao"/>
+		</property>
+	</bean>
+	<bean id="siteStatusBiz" class="com.nbcedu.function.booksite.biz.impl.SiteStatusBizImpl">
+		<property name="siteStatusDao">
+			<ref bean="siteStatusDao"/>
+		</property>
+	</bean>	
+	<!-- new -->
+	<bean id="bsUserRoleBiz" class="com.nbcedu.function.booksite.biz.impl.BSUserRoleBizImpl">
+		<property name="userRoleDao" ref="bsUserRoleDao" />
+	</bean>	
+	
+	
+</beans>	
+	

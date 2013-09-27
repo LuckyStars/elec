@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.nbcedu.function.booksite.model">
+	<class name="SiteStatus" table="T_BOOKSITE_SITESTATUS">
+
+		<id name="siteStatus_id" column="pk_SITESTATUS_ID" length="32" type="java.lang.String">
+			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+		</id>
+
+		<property name="siteStatus_name" column="SITESTATUS_NAME"></property>
+		<property name="siteStatus_checkId" column="siteStatus_checkId"></property>
+		
+		<!-- 场馆 -->	
+     	<set name="sites" cascade="save-update" inverse="true">
+			<key column="FK_SITESTATUS_NO"></key>
+			<one-to-many class="com.nbcedu.function.booksite.model.Site"/>
+		</set>
+		
+		<!-- 活动级别 -->
+		<set name="activityLevels" cascade="save-update" inverse="true">
+			<key column="FK_SITESTATUS_NO"></key>
+			<one-to-many class="com.nbcedu.function.booksite.model.ActivityLevel"/>
+		</set>
+		
+		<!-- 活动类型 -->
+		<set name="activityTypes" cascade="save-update" inverse="true">
+			<key column="FK_SITESTATUS_NO"></key>
+			<one-to-many class="com.nbcedu.function.booksite.model.ActivityType"/>
+		</set>
+	</class>
+</hibernate-mapping>			

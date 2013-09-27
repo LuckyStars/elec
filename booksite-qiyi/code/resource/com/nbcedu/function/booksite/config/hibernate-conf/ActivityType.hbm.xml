@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.nbcedu.function.booksite.model">
+	<class name="ActivityType" table="T_BOOKSITE_ACTIVITYTYPE">
+
+		<id name="activityType_id" column="PK_ACTIVITYTYPE_ID" length="32" type="java.lang.String">
+			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+		</id>
+				
+		<property name="activityType_name" column="activityType_NAME"></property>
+		<property name="activityType_sort" column="activityType_sort"></property>
+				
+     	<!-- 场馆 -->
+		<idbag name="sites" table="T_BOOKSITE_SITE_TYPE" cascade="save-update">
+     		<collection-id type="string" length="32" column="PK_T_BOOKSITE_SITE_TYPE_ID">
+     			<generator class="com.nbcedu.common.uuid.UIDGenerator"/>
+     		</collection-id>
+     		<key column="TYPE_NO"></key>
+     		<many-to-many class="com.nbcedu.function.booksite.model.Site" column="SITE_NO"></many-to-many>
+     	</idbag>
+		
+		<!-- 预定场馆表单 -->
+		<set name="bookSites"  cascade="save-update" inverse="true">
+			<key column="FK_ACTIVITYTYPE_NO"></key>
+			<one-to-many class="com.nbcedu.function.booksite.model.BookSite"/>
+		</set>
+		
+		<!-- 场馆状态 -->
+		<many-to-one name="siteStatus" class="com.nbcedu.function.booksite.model.SiteStatus" cascade="save-update" lazy="false">
+			<column name="FK_SITESTATUS_NO"></column>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>			

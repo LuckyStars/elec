@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="bookSite" extends="struts-default" namespace="/bookSite">
+		<result-types>
+			<result-type name="chart"
+				class="org.apache.struts2.dispatcher.ChartResult"></result-type>
+		</result-types>
+		<interceptors>
+			<interceptor name="authority" class="BSAdminInterceptor" />
+			<interceptor name="bookSiteRoleInterceptor" class="bookSiteRoleInterceptor"></interceptor>
+			<interceptor-stack name="myDefault">
+				<interceptor-ref name="bookSiteRoleInterceptor"></interceptor-ref>
+			<interceptor-ref name="authority">
+					<param name="includeMethods">
+						update,retrieveByName,retrieveSendMessage,
+						addEntityReady,addEntity,deleteEntity,updateEntity,updateLevelStatus,retrieveById,
+						retrieveByIdBack,retrieveByStatusId,retrieveXLS,retrieveSiteXLSTable,retrieveLevelXLSTable,retrieveJfreeChart,retrieveSiteJfreeChart,retrieveLevelJfreeChart,retrieveSiteDataSet,retrieveLevelDataSet,
+				</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myDefault"></default-interceptor-ref>
+
+		<!-- 全局 -->
+		<!-- <global-results>
+			当返回login视图名时，转入/login.jsp页面
+			<result name="login">/function/function-booksite/login.jsp</result>
+		</global-results> -->
+
+		<action name="*BookSite" class="BSBookSiteAction" method="{1}">
+			<result name="toDownLoad">/function/function-booksite/manage_download.jsp
+			</result>
+			<!-- toDetail old   detail new -->
+			<result name="detail">/function/function-booksite/pages/bookManage/detail.jsp
+			</result>
+			<result name="toDetail">/function/function-booksite/bookSiteInfo_detail.jsp
+			</result>
+			<result name="toReturn">/function/function-booksite/return.jsp</result>
+			<result name="toUpdate">/function/function-booksite/updateMyBookSiteInfo.jsp
+			</result>
+			<!-- toBookSiteBackList old   list new -->
+			<result name="list">/function/function-booksite/pages/bookManage/list.jsp
+			</result>
+			<result name="toBookSiteBackInfo">/function/function-booksite/pages/bookManage/detail.jsp
+			</result>
+			<result name="toClashBookSiteBackInfo">/function/function-booksite/detail_clash.jsp
+			</result>
+			<result name="toBookSiteBackList">/function/function-booksite/manage_bookSiteInfo.jsp
+			</result>
+			<result name="toClashBookSiteBackInfo">/function/function-booksite/manage_bookSiteInfoDetail_clash.jsp
+			</result>
+			<result name="toBookSiteList">/function/function-booksite/pages/askforSite/askforSite.jsp
+			</result>
+			<result name="bookSiteInfo">/function/function-booksite/pages/askforSite/bookSiteInfo.jsp
+			</result>
+			<result name="bookSiteList">/function/function-booksite/pages/siteManage/bookSiteInfo.jsp
+			</result>
+			<result name="toMyBookList">/function/function-booksite/myBook.jsp</result>
+			<result name="toMyBookUnCheckList">/function/function-booksite/myBookUnPass.jsp
+			</result>
+			<result name="toMyBookDetail">/function/function-booksite/myBookDetail.jsp
+			</result>
+
+			<result name="jumpToBookSiteListBack" type="redirectAction">
+				retrieveAllBackBookSite.action
+		</result>
+			<result name="jumpToBookSiteList" type="redirectAction">
+				retrieveSiteAndBookInfoByIdBookSite.action
+		</result>
+			<result name="jumpToMyBook" type="redirectAction">
+				retriveByUserIdBookSite.action
+		</result>
+
+			<result name="showChart" type="dispatcher">
+				/function/function-booksite/manage_statistics.jsp
+		</result>
+			<!-- 文件下载 -->
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${file}"</param>
+				<param name="bufferSize">5120</param>
+			</result>
+
+			<!--
+				显示jfreechart展现图片 <result name="getJfreeChart" type="chart"> <param
+				name="imageType">png</param> <param name="height">600</param> <param
+				name="width">800</param> </result>
+			-->
+			<result name="info">/function/function-booksite/pages/booksite/info.jsp
+			</result>
+			<result name="search">/function/function-booksite/pages/booksite/booksite_list.jsp
+			</result>
+			<result name="detail">/function/function-booksite/pages/booksite/detail.jsp
+			</result>
+			<result name="input">/function/function-booksite/pages/booksite/input.jsp
+			</result>
+			<result name="reload" type="redirect">/bookSite/searchBookSite.action
+			</result>
+		</action>
+		<!-- 预订管理-->
+		<action name="*BookManage" class="BSBookManageAction" method="{1}">
+		
+		<result name="list">/function/function-booksite/pages/bookManage/list.jsp</result>
+		<result name="search">/function/function-booksite/pages/bookManage/list.jsp</result>
+		
+		</action>
+		
+		<action name="*ActivityLevel" class="BSActivityLevelAction"
+			method="{1}">
+
+			<result name="toAddActivityLevel">/function/function-booksite/manage_addActivityLevel.jsp
+			</result>
+			<result name="toUpdateActivityLevel">/function/function-booksite/pages/activityLevel/manage_updateActivityLevel.jsp
+			</result>
+			<result name="toActivityLevelList">/function/function-booksite/activityLevelList.jsp
+			</result>
+			<!-- toActivityLevelList old  levelList new  -->
+			<result name="list">/function/function-booksite/pages/activityLevel/list.jsp
+			</result>
+			<result name="jumpToActivityLevelListBack" type="redirectAction">
+				retrieveAllBackActivityLevel.action
+		</result>
+
+		</action>
+
+		<action name="*ActivityType" class="BSActivityTypeAction"
+			method="{1}">
+			<!-- <result name="toAddActivityType">/function/function-booksite/addActivityType.jsp
+			</result>
+			<result name="toActivityTypeList">/function/function-booksite/activityTypeList.jsp
+			</result>-->
+			<!-- toActivityTypeList old   typeList new -->
+			<result name="list">/function/function-booksite/pages/activityType/list.jsp
+			</result>
+			<result name="jumpToActivityTypeListBack" type="redirectAction">
+				retrieveAllBackActivityType.action
+			</result>
+			<result name="toUpdateActivityType">/function/function-booksite/pages/activityType/manage_update.jsp
+			</result>
+
+
+		</action>
+
+		<!-- 我的预订action -->
+		<action name="*mySite" class="BSMySiteAction" method="{1}">
+			<result name="gotoedit">/function/function-booksite/pages/booksite/input.jsp</result>
+		</action>
+
+		<action name="*Site" class="BSSiteAction" method="{1}">
+			<result name="toSiteListBack">/function/function-booksite/manage_siteList.jsp
+			</result>
+			<result name="list">/function/function-booksite/pages/siteManage/manage_siteList.jsp
+			</result>
+
+			<!-- toSiteLisForBook old bookSite  new -->
+			<result name="bookSite">/function/function-booksite/pages/askforSite/list.jsp
+			</result>
+			<result name="toSiteLisForBook">/function/function-booksite/siteList.jsp</result>
+			<result name="toUpdate">/function/function-booksite/pages/siteManage/manage_updateSite.jsp
+			</result>
+			<result name="toLogin">/function/function-booksite/login.jsp</result>
+			<result name="jumpToSiteListBack" type="redirectAction">
+				retrieveAllBackSite.action
+		</result>
+			<!--
+				显示jfreechart展现图片 <result name="getJfreeChart" type="chart"> <param
+				name="imageType">png</param> <param name="height">600</param> <param
+				name="width">800</param> </result>
+			-->
+			<result name="showChart" type="dispatcher">
+				/function/function-booksite/manage_statistics.jsp
+		</result>
+		</action>
+
+		<action name="*SiteStatus" class="BSSiteStatusAction" method="{1}">
+			<result name="toAddSiteStatus">/function/function-booksite/addSiteStatus.jsp
+			</result>
+			<result name="toUpdate">/function/function-booksite/updateSiteStatus.jsp
+			</result>
+			<result name="toSiteStatusList">/function/function-booksite/siteStatusList.jsp
+			</result>
+			<result name="jumpToSiteStatusList" type="redirectAction">
+				retrieveAllSiteStatus.action
+			</result>
+		</action>
+
+		<action name="*User" class="BookSiteUserAction" method="{1}">
+			<result name="toUserListBack">/function/function-booksite/manage_userList.jsp
+			</result>
+			<result name="toUserListSearchBack">/function/function-booksite/manage_userList_search.jsp
+			</result>
+			<result name="list">/function/function-booksite/pages/userrole/user_list.jsp
+			</result>
+			<result name="search">/function/function-booksite/pages/userrole/search_result.jsp
+			</result>
+			<result name="reload" type="redirect">/bookSite/listUser.action</result>
+			<result name="toManageIndex">/function/function-booksite/pages/admin/index.jsp
+			</result>
+			<result name="jumpSiteIndex">/function/function-booksite/pages/index.jsp
+			</result>
+			<result name="jumpToUserSearchListBack" type="redirectAction">
+				retrieveByNameUser.action
+			</result>
+			<result name="jumpToUserListBack" type="redirectAction">
+				retrieveAllBackUser.action
+			</result>
+			<result name="jumpToSiteList" type="redirectAction">
+				retrieveOpenSite.action
+			</result>
+			<result name="toSendMessage">/function/function-booksite/pages/sendMessage/index.jsp
+			</result>
+		</action>
+
+		<action name="*Statistics" class="BSStatisticsAction" method="{1}">
+			<result name="show">/function/function-booksite/pages/statistics/show.jsp
+			</result>
+		</action>
+		
+		<!-- 待处理场馆action -->
+		<action name="*Pending" class="BSPendingSiteAction" method="{1}">
+			<result name="list">/function/function-booksite/pages/pendingSite/pending_list.jsp</result>
+			<result name="detail">/function/function-booksite/pages/pendingSite/pending_detail.jsp</result>
+			<result name="reload" type="redirect">/bookSite/listPending.action</result>
+		</action>
+		<!-- 我的审核action-->
+		<action name="*Audit" class="BSAuditAction" method="{1}">
+			<result name="list">/function/function-booksite/pages/audit/list.jsp</result>
+			<result name="reload" type="redirect">/bookSite/listAudit.action</result>
+		</action>
+		
+	</package>
+
+</struts>   
+ 

@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+/*分页样式开始*/
+.page_nav{line-height:18px;margin-top: 30px;margin-right: 0px;margin-bottom: 0px;margin-left: 0;float: left;width: 100%;}
+* .page_nav{overflow:hidden;zoom:1}
+.page_nav ul a{display:block;background:#fff;border:1px solid #ddd;padding:0 4px}
+.page_nav ul a:link,.page_nav a:visited,.page_nav a:hover{color:#494949;text-decoration:none;}
+* .page_nav ul a{*line-height:14px;*padding-top:3px;*padding-bottom:1px}
+.page_nav a:hover{color:#126BB5;background-color:#eee}
+.page_nav_prev,.page_nav_next{float:left;padding:0 5px 0 0}
+.page_nav_prev a{background:#fff url(../images/page_up.gif) no-repeat 3px 5px;padding-left:14px;width:36px}
+.page_nav_next a{background:#fff url(../images/page_down.gif) no-repeat 45px 5px;padding-right:14px;width:36px}
+.page_nav_prev span{display:block;color:#999;background:url(../images/page_up.gif) no-repeat 3px 5px;padding:1px 5px 1px 15px}
+* .page_nav_prev span{*padding:2px 5px 0 15px;_padding:0 5px 2px 15px;}
+.page_nav_next span{display:block;color:#999;background:url(../images/page_down.gif) no-repeat 45px 5px;padding:1px 15px 1px 5px}
+* .page_nav_next span{*padding:2px 15px 0 5px;_padding:0 15px 2px 5px;}
+.page_nav ul{float:left;padding:0 5px 0 5px;list-style-type: none;}
+.page_nav ul li{float:left;margin:0 5px 0 0}
+.page_nav .page_nav_current{color:#126BB5;line-height:20px;font-weight:bold;margin:0 8px 0 5px}
+* .page_nav .page_nav_current{*line-height:14px;*padding-top:4px;*padding-bottom:2px}
+.page_nav abbr{color:#999}
+.page_nav .page_nav_jump{float:left;vertical-align:middle; padding-right:20px;}
+.page_nav .page_nav_jump input.text{width:20px;padding:1px; border:1px solid #dcdcdc;}
+.page_nav .page_nav_jump input.submit{background:url(../images/page_go.gif);border:none;width:32px;padding:0 0 2px 2px;*padding:2px 0 0 2px;height:18px;text-align:center;cursor:pointer}
+.page_nav .add{ float:right; display:block; width:70px; height:25px; line-height:25px; text-align:center; background:url(../images/btn0.png) no-repeat;}
+/*分页样式结束*/

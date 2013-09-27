@@ -1,0 +1,41 @@
+﻿call bookSiteTrans('shijia20120913');
+
+drop procedure bookSiteTrans;
+
+create procedure bookSiteTrans(IN nbclib_name varchar(255))
+begin
+	DECLARE columnCount int unsigned;
+	DECLARE user_no varchar(32);
+	DECLARE user_id varchar(255);
+	DECLARE siteCur CURSOR
+		for SELECT FK_USER_NO,userId FROM t_booksite_booksite;
+			
+	SET columnCount  = (select count(1) from information_schema.columns 
+	
+	where table_schema= nbclib_name 
+		and table_name='t_booksite_booksite');
+	
+	select columnCount;
+	
+	if columnCount =12 then
+		ALTER TABLE t_booksite_booksite
+		ADD COLUMN userId varchar(255) NULL ,
+		ADD COLUMN userName varchar(255) NULL ;
+	
+		OPEN siteCur;
+		cursor_loop:loop
+			fetch siteCur into user_no,user_id;
+			if user_id is null then
+				update 
+					t_booksite_booksite bb 
+					inner join t_foundation_user fu
+					on fu.PK_T_FOUNDATION_USER_ID = bb.FK_USER_NO
+				set bb.userId = fu.UID,bb.userName=fu.NAME;
+			end if;
+		end loop cursor_loop;
+		close siteCur;
+		
+	end if;
+end;
+
+call bookSiteTrans('shijia20120913');
